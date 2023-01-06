@@ -2,6 +2,8 @@ package lesson4;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Reg {
     public static void main(String[] args) {
@@ -68,5 +70,13 @@ public class Reg {
         // т.е. replaceAll принимает паттерн на вход, а не искомый символ
         a = a.replaceFirst(" ", "."); // меняет первое встреч. знач.
         System.out.println(a);
+
+        a = "hello gaga@mail.ru, hey joy baba@gmail.com";
+        Pattern serch = Pattern.compile("\\w+@(mail|gmail)\\.((ru)|com)");
+        Matcher matcher = serch.matcher(a);
+        while (matcher.find()) {
+            System.out.println(matcher.group());
+        }
+
     }
 }
